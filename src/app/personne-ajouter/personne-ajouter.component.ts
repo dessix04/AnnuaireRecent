@@ -1,0 +1,32 @@
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Personne } from '../models/personne';
+import { PersonneService } from '../services/personne.service';
+
+@Component({
+  selector: 'app-personne-ajouter',
+  templateUrl: './personne-ajouter.component.html',
+  styleUrls: ['./personne-ajouter.component.css']
+})
+export class PersonneAjouterComponent implements OnInit {
+
+  constructor(private ps: PersonneService) { }
+
+  ngOnInit(): void {
+  }
+
+
+  traiterFormulaire(form: NgForm) {
+    console.log(form);
+    this.ps.ajouterPersonne(this.formValueVersPersonne(form.value))
+  }
+
+  
+  formValueVersPersonne(formValue: any): Personne {
+    return {
+      nom: formValue.nom,
+      prenom: formValue.prenom,
+      telephone: formValue.telephone
+    } as Personne;
+  }
+}

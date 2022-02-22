@@ -1,0 +1,20 @@
+<h3>Ajouter une personne</h3>
+<div id="personne">
+    <form #f="ngForm" (submit)="traiterFormulaire(f)">
+
+        <div class="alert"><label for="nom"><span class="info">Nom</span></label>
+            <div> <input type="text" name="nom" ngModel #champNom="ngModel" required minlength="2" maxlength="50"></div>
+        </div>
+        <div class="alert"> <div *ngIf="champNom.invalid ">
+            le nom n'est pas correct
+        </div></div>
+        <div class="alert"><label for="prenom"><span class="info">Prénom</span></label>
+            <div> <input type="text" name="prenom" ngModel></div>
+        </div>
+        <div class="alert"><label for="telephone"><span class="info">Telephone</span></label>
+            <div> <input type="text" name="telephone" ngModel pattern="^"></div>
+        </div>
+
+        <button type="submit" [hidden]="f.invalid">Ajouter</button>
+    </form>
+</div>
