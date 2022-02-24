@@ -1,0 +1,12 @@
+.carte {
+    width: 50em;
+    background-color: #B58951;
+    color: #FFE4C2;
+    padding: 1em 1em;
+    margin: 1em auto;
+    display: inline-block;
+    }
+    
+    .carte button {
+    float: right;
+    }
