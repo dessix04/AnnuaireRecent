@@ -12,4 +12,7 @@ export class PersonneService {
     this.personnes.push(personne);
     console.log(this.personnes)
   }
+  getPersonnes() : Personne[]{
+    return this.personnes.slice()
+  }
 }
