@@ -1,3 +1,4 @@
 <div *ngFor="let p of personnesAAfficher">
-<app-personne-detail [pers]="p"></app-personne-detail>
+<app-personne-detail [pers]="p" 
+(suppressionPersonneEvent)="traiterSuppressionPersonne($event)"></app-personne-detail>
 </div>

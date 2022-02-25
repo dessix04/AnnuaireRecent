@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Personne } from '../models/personne';
+import { PersonneService } from '../services/personne.service';
 
 @Component({
   selector: 'app-personne-detail',
@@ -9,9 +10,14 @@ import { Personne } from '../models/personne';
 export class PersonneDetailComponent implements OnInit {
 @Input()
 pers !: Personne;
-  constructor() { }
+@Output()
+suppressionPersonneEvent = new EventEmitter<Personne>()
+  constructor(private ps: PersonneService) { }
 
   ngOnInit(): void {
   }
-
+  traiterButonSupprimer(form: Personne) {
+   // this.ps.supprimer(form);
+   this.suppressionPersonneEvent.emit(form);
+  }
 }

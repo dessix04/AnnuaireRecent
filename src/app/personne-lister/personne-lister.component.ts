@@ -15,5 +15,8 @@ personnesAAfficher : Personne[] = []
 
   ngOnInit(): void {
   }
-
+  traiterSuppressionPersonne(personneASupprimer: Personne){
+    this.ps.supprimer(personneASupprimer);
+    this.personnesAAfficher = this.ps.getPersonnes()
+  }
 }

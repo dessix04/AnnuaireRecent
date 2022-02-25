@@ -12,6 +12,10 @@ export class PersonneService {
     this.personnes.push(personne);
     console.log(this.personnes)
   }
+  supprimer(perso:Personne){
+    this.personnes = this.personnes.filter(p => p != perso)
+    console.log(perso)
+  }
   getPersonnes() : Personne[]{
     return this.personnes.slice()
   }
