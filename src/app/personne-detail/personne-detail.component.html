@@ -1,7 +1,11 @@
 <div class="carte"> 
-    <div>{{pers.prenom}}
-         {{pers.nom}} 
-         {{pers.telephone}}
+    <div>
+{{numero}} -
+          {{pers.prenom | upperfirst}}
+         {{pers.nom | uppercase}} 
+     <br> 
+     <div *ngIf="pers.telephone != null"
+     >☎  {{pers.telephone}}</div>
     </div>
      <button type="reset" (click)="traiterButonSupprimer(pers)">Supprimer</button>
 </div>

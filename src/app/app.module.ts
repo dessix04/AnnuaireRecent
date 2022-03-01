@@ -11,6 +11,7 @@ import { PersonneListerComponent } from './personne-lister/personne-lister.compo
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { PersonneDetailComponent } from './personne-detail/personne-detail.component';
+import { UpperfirstPipe } from './pipes/upperfirst.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PersonneDetailComponent } from './personne-detail/personne-detail.compo
     AproposComponent,
     PersonneListerComponent,
     ContactComponent,
-    PersonneDetailComponent
+    PersonneDetailComponent,
+    UpperfirstPipe
   ],
   imports: [
     FormsModule,

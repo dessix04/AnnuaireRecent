@@ -10,6 +10,8 @@ import { PersonneService } from '../services/personne.service';
 export class PersonneDetailComponent implements OnInit {
 @Input()
 pers !: Personne;
+@Input()
+numero !: number;
 @Output()
 suppressionPersonneEvent = new EventEmitter<Personne>()
   constructor(private ps: PersonneService) { }
