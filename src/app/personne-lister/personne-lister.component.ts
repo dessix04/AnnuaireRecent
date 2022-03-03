@@ -8,29 +8,36 @@ import { PersonneService } from '../services/personne.service';
   styleUrls: ['./personne-lister.component.css']
 })
 export class PersonneListerComponent implements OnInit {
-personnesAAfficher : Personne[] = []
-  constructor(private ps: PersonneService) { 
-   this.majPersonnesAAfficher()
-   // this.personnesAAfficher= ps.getPersonnes()
+
+
+  personnesAAfficher: Personne[] = [];
+
+  constructor(private ps: PersonneService) {
+    this.majPersonnesAAfficher()
+    // this.personnesAAfficher= ps.getPersonnes()
   }
 
   ngOnInit(): void {
   }
 
   //fonction qui met à jour les personnes à afficher 
-  majPersonnesAAfficher (){
+  majPersonnesAAfficher() {
     this.ps.getPersonnes().subscribe(
-      (personnesPubliées: Personne[]) => {
-        this.personnesAAfficher = personnesPubliées}
+       (personnesPubliees: Personne[]) => {
+        this.personnesAAfficher = personnesPubliees
+        console.log(personnesPubliees);
+       }
     )
+
   }
-  traiterSuppressionPersonne(personneASupprimer: Personne){
+
+  traiterSuppressionPersonne(personneASupprimer: Personne) {
     this.ps.supprimer(personneASupprimer).subscribe(
       () => {
-       this.majPersonnesAAfficher()
-     
+        this.majPersonnesAAfficher()
+
       }
     )
-  
+
   }
 }

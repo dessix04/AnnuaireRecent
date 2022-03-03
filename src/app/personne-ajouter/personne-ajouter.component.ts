@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Personne } from '../models/personne';
@@ -10,15 +11,20 @@ import { PersonneService } from '../services/personne.service';
 })
 export class PersonneAjouterComponent implements OnInit {
 
+  dernierNom: string = '';
   constructor(private ps: PersonneService) { }
 
   ngOnInit(): void {
   }
-
+;
 
   traiterFormulaire(form: NgForm) {
     console.log(form);
-    this.ps.ajouterPersonne(this.formValueVersPersonne(form.value))
+    this.ps.ajouterPersonne(this.formValueVersPersonne(form.value)).subscribe(
+      (p:Personne) => {console.log() }
+    );
+    this.dernierNom = form.value.nom;
+    form.reset();
   }
 
   

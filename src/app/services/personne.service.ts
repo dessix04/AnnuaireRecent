@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Personne } from '../models/personne';
@@ -8,13 +8,24 @@ import { Personne } from '../models/personne';
 })
 export class PersonneService {
   // L'URL de l'API REST
-  personnesURL='http://localhost:3000/api/Personnes'
-  
+ private personnesURL='http://localhost:3000/api/Personnes'
+
+ // les options de l'entete des requetes HTTP
+  private httpOptions = {
+    'headers': new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
 
   constructor(private http: HttpClient) { }
 
-  ajouterPersonne (personne: Personne){
+  ajouterPersonne (personne: Personne) : Observable<Personne>{
+    return this.http.post<Personne>(
+      this.personnesURL, personne, this.httpOptions
+    )
+
+  // <div class="alert"> <div *ngIf="champNom.invalid ">
+ // le nom n'est pas correct
+ // </div>
   }
 
   supprimer ( personneASupprimer: Personne){

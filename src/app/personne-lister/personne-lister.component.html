@@ -1,6 +1,5 @@
-<div *ngFor="let p of personnesAAfficher index as i">
-
-    <app-personne-detail [pers]="p" 
-(suppressionPersonneEvent)="traiterSuppressionPersonne($event)"
-[numero]="i"></app-personne-detail>
+<div *ngFor="let p of personnesAAfficher; index as i">
+    <app-personne-detail [pers]="p" (suppressionPersonneEvent)="traiterSuppressionPersonne($event)" [numero]="i">
+    </app-personne-detail>
+    <div>il y'a {{i}}personnes dans l'annuaire</div>
 </div>

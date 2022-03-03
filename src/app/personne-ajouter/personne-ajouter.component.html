@@ -12,9 +12,10 @@
             <div> <input type="text" name="prenom" ngModel></div>
         </div>
         <div class="alert"><label for="telephone"><span class="info">Telephone</span></label>
-            <div> <input type="text" name="telephone" ngModel pattern="^"></div>
+            <div> <input type="text" name="telephone" ngModel ></div>
         </div>
 
         <button type="submit" [hidden]="f.invalid">Ajouter</button>
     </form>
 </div>
+<div *ngIf="dernierNom">{{ dernierNom }}  été ajouté</div>
