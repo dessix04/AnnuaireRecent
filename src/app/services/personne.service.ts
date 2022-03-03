@@ -1,22 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Personne } from '../models/personne';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonneService {
- personnes: Personne[] = [];
+  // L'URL de l'API REST
+  personnesURL='http://localhost:3000/api/Personnes'
+  
 
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
+
   ajouterPersonne (personne: Personne){
-    this.personnes.push(personne);
-    console.log(this.personnes)
   }
-  supprimer(perso:Personne){
-    this.personnes = this.personnes.filter(p => p != perso)
-    console.log(perso)
+
+  supprimer ( personneASupprimer: Personne){
+    return this.http.delete<Personne>(
+      this.personnesURL + '/' + personneASupprimer.id
+    )
   }
-  getPersonnes() : Personne[]{
-    return this.personnes.slice()
+
+  getPersonnes() : Observable<Personne[]>{
+   return this.http.get<Personne[]>(
+     this.personnesURL
+   );
   }
 }
