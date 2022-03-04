@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Personne } from '../models/personne';
 
 @Injectable({
@@ -29,9 +29,9 @@ private compteURL= 'http://localhost:3000/api/Personnes/count'
  // </div>
   }
   countPersonnes(): Observable<any>{
-    return this.http.get<Personne>(
+    return this.http.get<any>(
       this.compteURL
-    )
+    ).pipe(tap((o) => console.log(o)))
   } 
 
   supprimer ( personneASupprimer: Personne){
