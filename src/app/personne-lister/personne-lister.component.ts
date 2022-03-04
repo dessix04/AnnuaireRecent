@@ -20,6 +20,8 @@ export class PersonneListerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
   //fonction qui met à jour les personnes à afficher 
   majPersonnesAAfficher() {
     this.ps.getPersonnes().subscribe(

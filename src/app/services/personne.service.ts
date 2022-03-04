@@ -9,6 +9,7 @@ import { Personne } from '../models/personne';
 export class PersonneService {
   // L'URL de l'API REST
  private personnesURL='http://localhost:3000/api/Personnes'
+private compteURL= 'http://localhost:3000/api/Personnes/count'
 
  // les options de l'entete des requetes HTTP
   private httpOptions = {
@@ -21,12 +22,17 @@ export class PersonneService {
   ajouterPersonne (personne: Personne) : Observable<Personne>{
     return this.http.post<Personne>(
       this.personnesURL, personne, this.httpOptions
-    )
+)
 
   // <div class="alert"> <div *ngIf="champNom.invalid ">
  // le nom n'est pas correct
  // </div>
   }
+  countPersonnes(): Observable<any>{
+    return this.http.get<Personne>(
+      this.compteURL
+    )
+  } 
 
   supprimer ( personneASupprimer: Personne){
     return this.http.delete<Personne>(
