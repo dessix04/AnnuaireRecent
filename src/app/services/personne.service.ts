@@ -8,8 +8,8 @@ import { Personne } from '../models/personne';
 })
 export class PersonneService {
   // L'URL de l'API REST
- private personnesURL='http://localhost:3000/api/Personnes'
-private compteURL= 'http://localhost:3000/api/Personnes/count'
+ private personnesURL='http://[::1]:3000/personnes'
+private compteURL= 'http://[::1]:3000/personnes/count'
 
  // les options de l'entete des requetes HTTP
   private httpOptions = {
@@ -34,6 +34,10 @@ private compteURL= 'http://localhost:3000/api/Personnes/count'
     ).pipe(tap((o) => console.log(o)))
   } 
 
+  getPersonnesId(id: number): Observable<Personne>{
+    return this.http.get<Personne>(`http://[::1]:3000/personnes/${id}`).pipe(tap((o) => console.log(o)))
+  }
+
   supprimer ( personneASupprimer: Personne){
     return this.http.delete<Personne>(
       this.personnesURL + '/' + personneASupprimer.id
@@ -43,6 +47,11 @@ private compteURL= 'http://localhost:3000/api/Personnes/count'
   getPersonnes() : Observable<Personne[]>{
    return this.http.get<Personne[]>(
      this.personnesURL
-   );
+   );}
+
+   updatePersonnes(personne: Personne) : Observable<Personne>{
+    return this.http.put<Personne>(
+      this.personnesURL, personne, this.httpOptions
+    );
   }
 }

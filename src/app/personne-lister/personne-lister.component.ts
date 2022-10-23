@@ -9,7 +9,7 @@ import { PersonneService } from '../services/personne.service';
 })
 export class PersonneListerComponent implements OnInit {
 
-
+personneSelected !:Personne;
   personnesAAfficher: Personne[] = [];
 
   constructor(private ps: PersonneService) {
@@ -27,7 +27,7 @@ export class PersonneListerComponent implements OnInit {
     this.ps.getPersonnes().subscribe(
        (personnesPubliees: Personne[]) => {
         this.personnesAAfficher = personnesPubliees
-        console.log(personnesPubliees);
+        // console.log(personnesPubliees);
        }
     )
 
@@ -37,7 +37,6 @@ export class PersonneListerComponent implements OnInit {
     this.ps.supprimer(personneASupprimer).subscribe(
       () => {
         this.majPersonnesAAfficher()
-
       }
     )
 
