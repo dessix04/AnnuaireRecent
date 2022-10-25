@@ -19,6 +19,8 @@
     "target": "es2017",
     "module": "es2020",
     "lib": [
+      "DOM",
+      "es5",
       "es2020",
       "dom"
     ]
